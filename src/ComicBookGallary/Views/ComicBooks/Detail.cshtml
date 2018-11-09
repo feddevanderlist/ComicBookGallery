@@ -1,6 +1,9 @@
 ﻿@{
-    Layout = null;
+    Layout ="~/Views/Shared/_Layout.cshtml";
+
 }
+
+
 
 <!DOCTYPE html>
 
@@ -11,7 +14,22 @@
 </head>
 <body>
     <div>
-    <h1>Dit is mijn eerste view</h1>
+        <h1>@ViewBag.SeriesTitle</h1>
+        <h2>@ViewBag.IssueNumber</h2>
+        <h5>Description</h5>
+        <div>@Html.Raw(ViewBag.Description)</div>
+        @if (ViewBag.Artists.Length > 0)
+        {
+            <h5>Artist:</h5>
+            <div>
+                <ul>
+                    @foreach (var artist in ViewBag.Artists)
+                    {
+                        <li>@artist</li>
+                    }
+                </ul>
+            </div>
+        }
     </div>
 </body>
 </html>
